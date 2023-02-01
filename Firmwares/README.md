@@ -1,5 +1,7 @@
 # Release notes
 
+(Learn [here](https://github.com/bzzrs/gpio-6i6o/wiki/Upgrade-Firmware) how to upgrade the firmware)
+
 ## 5.2.0.
 - Added body to http /press/bank to permanently set the state of a contact
 
