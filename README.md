@@ -5,9 +5,3 @@ Control GPIO contacts using OSC and HTTP
 
 ![IMG_9501](https://user-images.githubusercontent.com/4082369/216042669-64576b54-bfaf-493e-8c04-f25c57fcc1af.png)
 
-
-## Usage
-
-## API
-
-## Firmwares
