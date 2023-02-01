@@ -61,7 +61,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ConformanceDeclaration'
-  /heartBeat:
+  /heartbeat:
     get:
       tags:
       - Capabilities
