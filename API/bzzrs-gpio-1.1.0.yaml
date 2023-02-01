@@ -1,0 +1,368 @@
+openapi: 3.0.0
+info:
+  title: Bzzrs GPIO Device
+  description: bzzrs API
+  version: "1.1.0"
+  contact:
+    email: api@bzzrs.tv
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+servers:
+  - url: http://192.168.0.246
+    description: This server
+paths:
+  /:
+    get:
+      tags:
+      - Capabilities
+      summary: Landing page
+      description: |-
+        The landing page provides links to the API definition, the conformance
+        statements and to the feature collections in this dataset.
+      operationId: getLandingPage
+      parameters:
+      - $ref: '#/components/parameters/fCommon'
+      responses:
+        '200':
+          description: The operation was executed successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LandingPage'
+            text/html:
+              schema:
+                $ref: '#/components/schemas/htmlSchema'
+        '400':
+          description: Bad Request
+        '406':
+          description: Not Acceptable
+        '500':
+          description: Server Error
+  /ident:
+    get:
+      tags:
+      - Capabilities
+      summary: Flashes the lights on the front of the device for 1 s.
+      operationId: ident
+      responses:
+        '204':
+          description: No content
+  /conformance:
+    get:
+      tags:
+      - Capabilities
+      summary: Conformance classes implemented by this server.
+      operationId: getConformanceDeclaration
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConformanceDeclaration'
+  /heartBeat:
+    get:
+      tags:
+      - Capabilities
+      summary: A 204 answer from this call shows this device is alive.
+      operationId: heartBeat
+      responses:
+        '204':
+          description: No content
+  /osc:
+    get:
+      tags:
+      - Access data
+      summary: get the OSC settings
+      operationId: osc
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OSCinfo'
+    post:
+      tags:
+      - Mutate data
+      summary: Update new OSC settings. Changes take effect immediately.
+      operationId: oscPost
+      security:
+        - basicAuth: []
+      requestBody:
+        description: the OSC settings
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OSCinfo'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OSCinfo'
+  /network:
+    get:
+      tags:
+      - Access data
+      summary: |-
+        Get network settings.
+      operationId: network
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkSettings'
+    post:
+      tags:
+      - Mutate data
+      summary: |- 
+        Update network settings. When type changes to Static, provide all 4 parameters. When changing to DHCP, no parameters need to be added. Press the Reset button on the front of the device to change from Static back to DHCP (when you do not know the static ip address). Changes take effect after reboot.
+      operationId: postNetwork
+      security:
+        - basicAuth: []
+      requestBody:
+        description: the Network settings
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NetworkSettings'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkSettings'
+  /firmware:
+    get:
+      tags:
+      - Access data
+      summary: Get firmware information from the device
+      operationId: getFirmware
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FirmwareVersion'
+    post:
+      tags:
+      - Mutate data
+      summary: Upload new firmware to the device. Changes take effect after reboot.
+      security:
+        - basicAuth: []
+      operationId: firmware
+      requestBody:
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
+      responses:
+        '200':
+          description: OK
+  /press/bank/{bank}/{index}:
+    post:
+      tags:
+      - Mutate data
+      summary: |-
+        Press a button. The provided bank number needs to match the bank o the OSC settings for it to be accepted. The index needs to be within the bounds of the device.
+      operationId: pressBank
+      parameters:
+        - in: path
+          name: bank
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+          description: the bank number
+        - in: path
+          name: index
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 6 # see device capabilities
+          description: the index within the bank
+      requestBody:
+        description: make it a permanent action
+        content:
+          application/json:
+            schema:
+              type: object
+              $ref: '#/components/schemas/PressBank'
+      responses:
+        '201':
+          description: No Content
+        '400':
+          description: Bad Request when banks do not match
+components:
+  securitySchemes:
+    basicAuth:     # <-- arbitrary name for the security scheme
+      type: http
+      scheme: basic
+  parameters:
+    fCommon:
+      name: f
+      in: query
+      description: Select the output format of the response. If no value is provided, the standard HTTP rules apply, i.e., the accept header will be used to determine the format.
+      required: false
+      style: form
+      explode: false
+      schema:
+        type: string
+        enum:
+        - html
+        - json
+  schemas:
+    htmlSchema:
+      type: string
+      example: <html>...</html>
+    LandingPage:
+      type: object
+      properties:
+        ModelName:
+          type: string
+          example: bzzrbx gpio 6i6o
+        SerialNo:
+          type: string
+          example: B8D61AA1FFEC
+        BonjourName:
+          type: string
+          example: gpio6i6o*218
+        NrInputs:
+          type: integer
+          example: 6
+        NrOutputs:
+          type: integer
+          example: 6
+        Uptime:
+          type: integer
+          example: 45874982 # in seconds
+        externalDocs:
+          $ref: '#/components/schemas/ExternalDocumentation'
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
+    ExternalDocumentation:
+      required:
+      - url
+      type: object
+      properties:
+        description:
+          type: string
+        url:
+          type: string
+    Link:
+      required:
+      - href
+      type: object
+      properties:
+        href:
+          type: string
+          format: uri-reference
+        rel:
+          type: string
+        type:
+          type: string
+        title:
+          type: string
+    FirmwareVersion:
+      type: object
+      properties:
+        Version:
+          type: string
+          example: '5.2.0'
+    PressBank:
+      type: object
+      properties:
+        Value:
+          type: boolean
+          example: true
+    NetworkSettings:
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          type: string
+          enum: [dhcp, static]
+          example: static
+        ip:
+          type: string
+          example: '192.168.0.121'
+        subnetmask:
+          type: string
+          example: '255.255.255.0'
+        gateway:
+          type: string
+          example: '192.168.0.1'
+        dns:
+          type: string
+          example: '74.125.68.102'
+    OSCinfo:
+      type: object
+      properties:
+        bank:
+          type: integer
+          minimum: 1
+          example: 1
+        EthernetToGpo:
+          $ref: '#/components/schemas/EthernetToGpo'
+        GpiToEthernet:
+          $ref: '#/components/schemas/GpiToEthernet'
+    ConformanceDeclaration:
+      type: object
+      properties:
+        conformsTo:
+          type: array
+          items:
+            type: string
+        description:
+          type: string
+        title:
+          type: string
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
+
+    EthernetToGpo:
+      type: object
+      properties:
+        port:
+          type: integer
+          minimum: 1024
+          maximum: 65535
+          example: 12321
+        autoUpDuration:
+          type: integer
+          minimum: 0
+          example: 15
+    GpiToEthernet:
+      type: object
+      properties:
+        host:
+          type: string
+          format: ip
+          example: '192.168.0.121'
+        port:
+          type: integer
+          minimum: 1024
+          maximum: 65535
+          example: 12321
+        reactOnContactClosed:
+          type: boolean
+          example: true
+        reactOnContactOpen:
+          type: boolean
+          example: false
