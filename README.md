@@ -47,6 +47,12 @@ The device accepts IEEE 802.3 PoE (Power cable not needed when providing PoE)
 
 Note: Both PoE and power cable can be attached to the machine at the same time.
 
+Note: for studio environments, a XLR RJ45 connector (eg Neutrik) is prefered over standards UTP cable.
+
 ### Ethernet to GPO
 
+6 3-pin male XLR are provided on the device to connect to. Pin 2 and 3 are connected (industry best practice).
+
 ### GPI to Ethernet
+
+6 3-pin female XLR are provided on the device to connect to. Pin 2 and 3 are connected (industry best practice).
