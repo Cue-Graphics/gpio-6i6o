@@ -56,9 +56,14 @@ The back panel also has 4 sections:
 A C13 cable fits in the C14 connector on the device. Input voltage ranges from 100V to 240V - 50 or 60Hz.
 This cable is optional is you provide PoE.
 
+![IMG_9518](https://user-images.githubusercontent.com/4082369/216110458-87012295-40a5-424b-94fd-496d2b91c68c.JPG)
+
+
 ### Ethernet
 An Ethernet cable that is connected to a switch or router.
 The device accepts IEEE 802.3 PoE (Power cable not needed when providing PoE)
+
+![IMG_9518](https://user-images.githubusercontent.com/4082369/216110586-b283dcdc-c64b-42cd-9cf8-a4ae32816ca4.JPG)
 
 Note: Both PoE and power cable can be attached to the machine at the same time.
 
