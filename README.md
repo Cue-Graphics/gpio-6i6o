@@ -73,6 +73,11 @@ Note: for studio environments, a XLR RJ45 connector (eg Neutrik) is prefered ove
 
 6 3-pin male XLR are provided on the device to connect to. Pin 2 and 3 are connected (industry best practice).
 
+![IMG_9519 2](https://user-images.githubusercontent.com/4082369/216111179-44d3d664-d3d2-4bf1-a114-0fad21acda75.JPG)
+
 ### GPI to Ethernet
 
 6 3-pin female XLR are provided on the device to connect to. Pin 2 and 3 are connected (industry best practice).
+
+![IMG_9520](https://user-images.githubusercontent.com/4082369/216111422-ae402dcf-7132-47ce-ac48-5df5235d9066.JPG)
+
