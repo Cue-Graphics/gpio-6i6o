@@ -7,6 +7,9 @@ Control GPIO contacts using OSC and HTTP
 
 ## Usage
 
+Detailed usage is provided in the [Wiki section](https://github.com/bzzrs/gpio-6i6o/wiki) of this repo.
+
 ### Powering the device and provide ethernet access
 - Wall-power and RJ45 UTP cable
 - RJ45 UTP cable with PoE
+
