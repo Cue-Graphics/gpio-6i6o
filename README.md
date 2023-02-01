@@ -5,3 +5,8 @@ Control GPIO contacts using OSC and HTTP
 
 ![IMG_9501](https://user-images.githubusercontent.com/4082369/216042669-64576b54-bfaf-493e-8c04-f25c57fcc1af.png)
 
+## Usage
+
+### Powering the device and provide ethernet access
+- Wall-power and RJ45 UTP cable
+- RJ45 UTP cable with PoE
