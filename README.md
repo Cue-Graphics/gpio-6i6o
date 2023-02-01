@@ -32,3 +32,21 @@ The GPO contact are fully galvanically seperated from the device circuitery and 
 
 ### GPI to Ethernet
 6 leds and 6 buttons provide a quick way to monitor GPI activity. After initial startup this section will not light up, as mo target host and port are provided. Use the web interface to set the target host and port and the leds will light up. Now puish a button and see that the led comes on (for as long as you keep the button pressed) and that the Net Act led flashes quickly (OSC message sent). The buttons are a quick way to send an OSC message during the development phase as well as during abnormal situations in the workflow (controlling computer not in the right mode/sequence).
+
+## Back panel 
+
+The back panel also has 4 sections:
+
+### Power
+A C13 cable fits in the C14 connector on the device. Input voltage ranges from 100V to 240V - 50 or 60Hz.
+This cable is optional is you provide PoE.
+
+### Ethernet
+An Ethernet cable that is connected to a switch or router.
+The device accepts IEEE 802.3 PoE (Power cable not needed when providing PoE)
+
+Note: Both PoE and power cable can be attached to the machine at the same time.
+
+### Ethernet to GPO
+
+### GPI to Ethernet
