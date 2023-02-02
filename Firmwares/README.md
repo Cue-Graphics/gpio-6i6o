@@ -2,7 +2,10 @@
 
 (Learn [here](https://github.com/bzzrs/gpio-6i6o/wiki/Upgrade-Firmware) how to upgrade the firmware)
 
-## 5.2.0 - 1st feb 2023
+## 6.0.0 - 2 feb 2023
+- Outgoing OSC are no longer bundles, but simple OSC ,essages. This increases the compatibility with other systems that not always have suport for OSC bundles. This breaks backward compatibility and forces a major version increase.
+
+## 5.2.0 - 1 feb 2023
 - Added body to http /press/bank to permanently set the state of a contact
 
 ## 5.1.0 - 25 Jan 2023
