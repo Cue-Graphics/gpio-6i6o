@@ -2,6 +2,9 @@
 
 (Learn [here](https://github.com/bzzrs/gpio-6i6o/wiki/Upgrade-Firmware) how to upgrade the firmware)
 
+## 6.0.1 - 4 feb 2023
+- Lights out when starting firmware upgrade.
+
 ## 6.0.0 - 2 feb 2023
 - Outgoing OSC are no longer bundles, but simple OSC ,essages. This increases the compatibility with other systems that not always have suport for OSC bundles. This breaks backward compatibility and forces a major version increase.
 
