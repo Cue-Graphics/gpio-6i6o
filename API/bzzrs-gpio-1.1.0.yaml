@@ -360,9 +360,15 @@ components:
           minimum: 1024
           maximum: 65535
           example: 12321
-        reactOnContactClosed:
-          type: boolean
-          example: true
-        reactOnContactOpen:
-          type: boolean
-          example: false
+                   open: 
+                     type: array
+                     items:
+                       type: string
+                     minItems: 6
+                     maxItems: 6
+                   close:
+                     type: array
+                     items:
+                       type: string
+                     minItems: 6
+                     maxItems: 6
