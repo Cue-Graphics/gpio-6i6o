@@ -360,15 +360,15 @@ components:
           minimum: 1024
           maximum: 65535
           example: 12321
-                   open: 
-                     type: array
-                     items:
-                       type: string
-                     minItems: 6
-                     maxItems: 6
-                   close:
-                     type: array
-                     items:
-                       type: string
-                     minItems: 6
-                     maxItems: 6
+        open: 
+          type: array
+          items:
+            type: string
+          minItems: 6
+          maxItems: 6
+        close:
+          type: array
+          items:
+            type: string
+          minItems: 6
+          maxItems: 6
