@@ -2,6 +2,9 @@
 
 (Learn [here](https://github.com/bzzrs/gpio-6i6o/wiki/Upgrade-Firmware) how to upgrade the firmware)
 
+## 6.1.0 - 3 aug 2023
+- Custom outgoing messages 
+
 ## 6.0.1 - 4 feb 2023
 - Lights out when starting firmware upgrade.
 
