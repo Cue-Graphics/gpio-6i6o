@@ -50,7 +50,7 @@ The back panel also has 4 sections:
 
 ### Power
 A C13 cable fits in the C14 connector on the device. Input voltage ranges from 100V to 240V - 50 or 60Hz.
-This cable is optional is you provide PoE.
+This cable is optional if the unit has the PoE option.
 
 ![IMG_9518](https://user-images.githubusercontent.com/4082369/216110458-87012295-40a5-424b-94fd-496d2b91c68c.JPG)
 
