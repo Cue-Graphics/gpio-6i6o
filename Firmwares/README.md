@@ -4,8 +4,8 @@
 
 ## 6.2.0 - 25 aug 2023
 - Add support for OSC Type Tag Strings.
-Example: /press/bank/{bank}/{index} ,ifsTTusFs 123 3.14 "Hello world!" -8 yes test
-   outputs: /press/bank/{bank}/{index} Tags: ,ifsTTusFs Arguments: [123, 3.14, Hello world!, true, true, -8 yes, false, test]
+Example: `/press/bank/{bank}/{index} ,ifsTTusFs 123 3.14 "Hello world!" -8 yes test`
+   outputs: `/press/bank/{bank}/{index} Tags: ,ifsTTusFs Arguments: [123, 3.14, Hello world!, true, true, -8 yes, false, test]`
 
 ## 6.1.0 - 3 aug 2023
 - Custom outgoing messages 
