@@ -2,6 +2,10 @@
 
 (Learn [here](https://github.com/bzzrs/gpio-6i6o/wiki/Upgrade-Firmware) how to upgrade the firmware)
 
+## 6.3.0 - 21 may 2024
+- Incoming OSC also simple messages (no longer OASC bundles). This increase interperability with othr OSC systems.
+- examples of OSC message formats and link to Help pages
+
 ## 6.2.0 - 25 aug 2023
 - Add support for OSC Type Tag Strings.
 Example: when pressing button 1 `/press/bank/{bank}/{index} ,ifsTTusFs 123 3.14 "Hello world!" -8 yes test`
@@ -14,7 +18,7 @@ Example: when pressing button 1 `/press/bank/{bank}/{index} ,ifsTTusFs 123 3.14 
 - Lights out when starting firmware upgrade.
 
 ## 6.0.0 - 2 feb 2023
-- Outgoing OSC are no longer bundles, but simple OSC ,essages. This increases the compatibility with other systems that not always have suport for OSC bundles. This breaks backward compatibility and forces a major version increase.
+- Outgoing OSC are no longer bundles, but simple OSC messages. This increases the compatibility with other systems that not always have suport for OSC bundles. This breaks backward compatibility and forces a major version increase.
 
 ## 5.2.0 - 1 feb 2023
 - Added body to http /press/bank to permanently set the state of a contact
